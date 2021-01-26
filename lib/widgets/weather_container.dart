@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:intl/intl.dart';
 import 'package:weather_flutter_app/model/weather_location.dart';
 import 'package:weather_flutter_app/widgets/weather_tile.dart';
 import 'package:weather_icons/weather_icons.dart';
