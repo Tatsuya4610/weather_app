@@ -8,23 +8,21 @@ import 'package:weather_flutter_app/widgets/transformer.dart';
 import 'package:weather_flutter_app/widgets/weather_container.dart';
 
 class WeatherScreen extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
-
     String weatherImg;
 
-
     final pageManager = Provider.of<PageManager>(context);
-    if (locationList[pageManager.page].weather == 'Sunny') {
+    if (locationList[pageManager.page].weather == 'Clear') {
       weatherImg = 'assets/images/sun.jpg';
-    } else if (locationList[pageManager.page].weather == 'Cloudy') {
+    } else if (locationList[pageManager.page].weather == 'Clouds') {
       weatherImg = 'assets/images/cloudy.jpg';
     } else if (locationList[pageManager.page].weather == 'Rain') {
       weatherImg = 'assets/images/rain.jpg';
     } else {
       weatherImg = 'assets/images/night.jpg';
     }
+
     return Scaffold(
       extendBodyBehindAppBar: true, //*背景と同化。
       appBar: AppBar(
@@ -57,19 +55,22 @@ class WeatherScreen extends StatelessWidget {
               child: Row(
                 children: [
                   for (int i = 0; i < locationList.length; i++) //リスト分だけ表示。
-                    if(i == pageManager.page) //表示しているPagePointが同じなら。
-                      PagePoint(isActive: true,)
+                    if (i == pageManager.page) //表示しているPagePointが同じなら。
+                      PagePoint(isActive: true)
                     else
-                      PagePoint(isActive: false,)
+                      PagePoint(isActive: false)
                 ],
               ),
             ),
-            TransformerPageView(//Dartパッケージ
+            TransformerPageView(
+              //Dartパッケージ
               onPageChanged: (value) => pageManager.setPage(value), //ページ番号渡し。
-              transformer: AccordionTransformer(), //transformer.dartに違うパターンのページ移動有ります。
+              transformer:
+                  AccordionTransformer(), //transformer.dartに違うパターンのページ移動有ります。
               scrollDirection: Axis.horizontal, //横スクロール。
-                itemCount: locationList.length,
-                itemBuilder: (ctx, index) => WeatherContainer(index)),
+              itemCount: locationList.length,
+              itemBuilder: (ctx, index) => WeatherContainer(index),
+            ),
           ],
         ),
       ),

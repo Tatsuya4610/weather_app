@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:weather_flutter_app/model/weather_location.dart';
+import 'package:weather_flutter_app/widgets/weather_tile.dart';
+import 'package:weather_icons/weather_icons.dart';
 
 class WeatherContainer extends StatelessWidget {
   WeatherContainer(this.index);
@@ -33,14 +35,6 @@ class WeatherContainer extends StatelessWidget {
                         color: Colors.white,
                       ),
                     ),
-                    SizedBox(
-                      height: 5,
-                    ),
-                    Text(
-                      DateFormat.yMd().add_Hm().format(DateTime.now()),
-                      style:
-                          GoogleFonts.lato(color: Colors.white, fontSize: 20),
-                    ),
                   ],
                 ),
                 Text(
@@ -51,28 +45,22 @@ class WeatherContainer extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Text(
-                      locationList[index].temperature,
+                      '${locationList[index].temperature.toStringAsFixed(0)}\u2103', //u2103は度Cに変換される。
                       style: GoogleFonts.lato(
-                        fontSize: 80,
+                        fontSize: 70,
                         fontWeight: FontWeight.bold,
                         color: Colors.white,
                       ),
                     ),
                     Row(
                       children: <Widget>[
-                        Icon(
-                          locationList[index].icon,
-                          color: Colors.white,
-                          size: 34,
-                        ),
-                        SizedBox(
-                          width: 15,
-                        ),
-                        Text(
-                          locationList[index].weather,
-                          style: GoogleFonts.lato(
-                              color: Colors.white, fontSize: 25),
-                        ),
+                        if(locationList[index].weather == 'Clear')
+                          WeatherTile(iconData: WeatherIcons.sunset,text: '晴れ',),
+                        if (locationList[index].weather == 'Clouds')
+                          WeatherTile(iconData: WeatherIcons.cloud,text: '曇り',),
+                        if(locationList[index].weather == 'Rain')
+                          WeatherTile(iconData: WeatherIcons.rain,text: '雨',)
+
                       ],
                     )
                   ],
@@ -118,7 +106,7 @@ class WeatherContainer extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        '50％',
+                        '${locationList[index].humidity.toString()}％',
                         style:
                             GoogleFonts.lato(color: Colors.white, fontSize: 20),
                       ),
@@ -127,7 +115,7 @@ class WeatherContainer extends StatelessWidget {
                   Column(
                     children: <Widget>[
                       Text(
-                        '降水確率',
+                        '気圧',
                         style: GoogleFonts.lato(
                           fontSize: 15,
                           fontWeight: FontWeight.bold,
@@ -135,7 +123,8 @@ class WeatherContainer extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        '${locationList[index].humidity.toString()}%',
+                        '${locationList[index].pressure.toString()}hpa',
+                        // '${locationList[index].humidity}%',
                         style:
                             GoogleFonts.lato(color: Colors.white, fontSize: 20),
                       ),

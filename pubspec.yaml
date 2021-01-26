@@ -33,6 +33,7 @@ dependencies:
   provider: ^4.3.3
   transformer_page_view: ^0.1.6
   weather_icons: ^2.0.2
+  http: ^0.12.2
 
 dev_dependencies:
   flutter_test:

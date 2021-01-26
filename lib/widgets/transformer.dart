@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:transformer_page_view/transformer_page_view.dart';
 import 'dart:math' as Math;
 
-//Dartパッケージ、transformer_page_view公式github参照。
+//Dartパッケージ、transformer_page_view公式github。
 
 class AccordionTransformer extends PageTransformer { //斜めスライド。
   @override
