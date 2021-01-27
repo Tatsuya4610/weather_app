@@ -19,6 +19,8 @@ class WeatherScreen extends StatelessWidget {
       weatherImg = 'assets/images/cloudy.jpg';
     } else if (locationList[pageManager.page].weather == 'Rain') {
       weatherImg = 'assets/images/rain.jpg';
+    } else if (locationList[pageManager.page].weather == 'Snow') {
+      weatherImg = 'assets/images/snow.jpg';
     } else {
       weatherImg = 'assets/images/night.jpg';
     }

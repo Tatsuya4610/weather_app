@@ -58,8 +58,9 @@ class WeatherContainer extends StatelessWidget {
                         if (locationList[index].weather == 'Clouds')
                           WeatherTile(iconData: WeatherIcons.cloud,text: '曇り',),
                         if(locationList[index].weather == 'Rain')
-                          WeatherTile(iconData: WeatherIcons.rain,text: '雨',)
-
+                          WeatherTile(iconData: WeatherIcons.rain,text: '雨',),
+                        if(locationList[index].weather == 'Snow')
+                          WeatherTile(iconData: WeatherIcons.snow,text: '雪',),
                       ],
                     )
                   ],
