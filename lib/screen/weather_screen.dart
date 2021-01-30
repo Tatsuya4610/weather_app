@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_riverpod/all.dart';
 import 'package:transformer_page_view/transformer_page_view.dart';
 import 'package:weather_flutter_app/model/page_manager.dart';
 import 'package:weather_flutter_app/model/weather_location.dart';
@@ -7,12 +7,15 @@ import 'package:weather_flutter_app/widgets/page_point.dart';
 import 'package:weather_flutter_app/widgets/transformer.dart';
 import 'package:weather_flutter_app/widgets/weather_container.dart';
 
-class WeatherScreen extends StatelessWidget {
+final pageManagerProvider = ChangeNotifierProvider((ref) => PageManager());
+
+class WeatherScreen extends ConsumerWidget { ////Consumerでない呼び出し方。*1
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, ScopedReader watch) { //Consumerでない呼び出し方。*1
+    final pageManager = watch(pageManagerProvider);
+
     String weatherImg;
 
-    final pageManager = Provider.of<PageManager>(context);
     if (locationList[pageManager.page].weather == 'Clear') {
       weatherImg = 'assets/images/sun.jpg';
     } else if (locationList[pageManager.page].weather == 'Clouds') {

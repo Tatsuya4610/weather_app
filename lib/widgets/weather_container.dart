@@ -101,7 +101,7 @@ class WeatherContainer extends StatelessWidget {
               Container(
                 margin: EdgeInsets.symmetric(vertical: 40),
                 decoration:
-                    BoxDecoration(border: Border.all(color: Colors.white30)),
+                BoxDecoration(border: Border.all(color: Colors.white30)),
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -119,7 +119,7 @@ class WeatherContainer extends StatelessWidget {
                       Text(
                         '${locationList[index].wind.toString()}m/s',
                         style:
-                            GoogleFonts.lato(color: Colors.white, fontSize: 20),
+                        GoogleFonts.lato(color: Colors.white, fontSize: 20),
                       ),
                     ],
                   ),
@@ -136,7 +136,7 @@ class WeatherContainer extends StatelessWidget {
                       Text(
                         '${locationList[index].humidity.toString()}％',
                         style:
-                            GoogleFonts.lato(color: Colors.white, fontSize: 20),
+                        GoogleFonts.lato(color: Colors.white, fontSize: 20),
                       ),
                     ],
                   ),
@@ -154,7 +154,7 @@ class WeatherContainer extends StatelessWidget {
                         '${locationList[index].pressure.toString()}hpa',
                         // '${locationList[index].humidity}%',
                         style:
-                            GoogleFonts.lato(color: Colors.white, fontSize: 20),
+                        GoogleFonts.lato(color: Colors.white, fontSize: 20),
                       ),
                     ],
                   )
