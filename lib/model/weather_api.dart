@@ -25,13 +25,13 @@ class WeatherAPI extends ChangeNotifier {
     isLoading = true;
     try {
       http.Response japanResponse = await http.get(
-          'https://api.openweathermap.org/data/2.5/weather?q=Tokyo&appid=$apiKey&lang=ja');
+          'https://api.openweathermap.org/data/2.5/weather?q=Tokyo&appid=$apiKey');
       http.Response londonResponse = await http.get(
-          'https://api.openweathermap.org/data/2.5/weather?q=London&appid=$apiKey&lang=ja');
+          'https://api.openweathermap.org/data/2.5/weather?q=London&appid=$apiKey');
       http.Response hawaiiResponse = await http.get(
-          'https://api.openweathermap.org/data/2.5/weather?q=Hawaii&appid=$apiKey&lang=ja');
+          'https://api.openweathermap.org/data/2.5/weather?q=Sydney&appid=$apiKey');
       http.Response washingtonResponse = await http.get(
-          'https://api.openweathermap.org/data/2.5/weather?q=Washington&appid=$apiKey&lang=ja');
+          'https://api.openweathermap.org/data/2.5/weather?q=Washington&appid=$apiKey');
 
       if (japanResponse.statusCode == 200 &&
           londonResponse.statusCode == 200 &&

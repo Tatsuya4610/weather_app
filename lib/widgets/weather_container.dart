@@ -26,14 +26,42 @@ class WeatherContainer extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     SizedBox(height: 120),
-                    Text(
-                      locationList[index].city,
-                      style: GoogleFonts.lato(
-                        fontSize: 35,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
+                    if(locationList[index].city == 'Tokyo')//日本語で情報を取り入れると東京都になる為、英語で取得し変換。
+                      Text(
+                        '東京',
+                        style: GoogleFonts.lato(
+                          fontSize: 35,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
                       ),
-                    ),
+                    if (locationList[index].city == 'London')
+                      Text(
+                        'ロンドン',
+                        style: GoogleFonts.lato(
+                          fontSize: 35,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
+                      ),
+                    if (locationList[index].city == 'Sydney')
+                      Text(
+                        'シドニー',
+                        style: GoogleFonts.lato(
+                          fontSize: 35,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
+                      ),
+                    if (locationList[index].city == 'Washington')//日本語で情報を取り入れるとワシントン州になる
+                      Text(
+                        'ワシントン',
+                        style: GoogleFonts.lato(
+                          fontSize: 35,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
+                      ),
                   ],
                 ),
                 Text(
