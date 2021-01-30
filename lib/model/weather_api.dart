@@ -23,32 +23,36 @@ class WeatherAPI extends ChangeNotifier {
 
   Future<void> _loadWeather() async {
     isLoading = true;
-    http.Response japanResponse = await http.get(
-        'http://api.openweathermap.org/data/2.5/weather?q=Tokyo&appid=$apiKey&lang=ja');
-    http.Response londonResponse = await http.get(
-        'http://api.openweathermap.org/data/2.5/weather?q=London&appid=$apiKey&lang=ja');
-    http.Response hawaiiResponse = await http.get(
-        'http://api.openweathermap.org/data/2.5/weather?q=Hawaii&appid=$apiKey&lang=ja');
-    http.Response washingtonResponse = await http.get(
-        'http://api.openweathermap.org/data/2.5/weather?q=Washington&appid=$apiKey&lang=ja');
+    try {
+      http.Response japanResponse = await http.get(
+          'https://api.openweathermap.org/data/2.5/weather?q=Tokyo&appid=$apiKey&lang=ja');
+      http.Response londonResponse = await http.get(
+          'https://api.openweathermap.org/data/2.5/weather?q=London&appid=$apiKey&lang=ja');
+      http.Response hawaiiResponse = await http.get(
+          'https://api.openweathermap.org/data/2.5/weather?q=Hawaii&appid=$apiKey&lang=ja');
+      http.Response washingtonResponse = await http.get(
+          'https://api.openweathermap.org/data/2.5/weather?q=Washington&appid=$apiKey&lang=ja');
 
-    if (japanResponse.statusCode == 200 &&
-        londonResponse.statusCode == 200 &&
-        hawaiiResponse.statusCode == 200 &&
-        washingtonResponse.statusCode == 200) {
-      //200は問題なく情報取得。
-      var japanDecodeData = jsonDecode(japanResponse.body);
-      var londonDecodeData = jsonDecode(londonResponse.body);
-      var hawaiiDecodeData = jsonDecode(hawaiiResponse.body);
-      var washingtonDecodeData = jsonDecode(washingtonResponse.body);
+      if (japanResponse.statusCode == 200 &&
+          londonResponse.statusCode == 200 &&
+          hawaiiResponse.statusCode == 200 &&
+          washingtonResponse.statusCode == 200) {
+        //200は問題なく情報取得。
+        var japanDecodeData = jsonDecode(japanResponse.body);
+        var londonDecodeData = jsonDecode(londonResponse.body);
+        var hawaiiDecodeData = jsonDecode(hawaiiResponse.body);
+        var washingtonDecodeData = jsonDecode(washingtonResponse.body);
 
-      CityWeather.fromJsonDecode(japanDecodeData);
-      CityWeather.fromJsonDecode(londonDecodeData);
-      CityWeather.fromJsonDecode(hawaiiDecodeData);
-      CityWeather.fromJsonDecode(washingtonDecodeData);
-    } else {
-      print('情報取得エラー');
+        CityWeather.fromJsonDecode(japanDecodeData);
+        CityWeather.fromJsonDecode(londonDecodeData);
+        CityWeather.fromJsonDecode(hawaiiDecodeData);
+        CityWeather.fromJsonDecode(washingtonDecodeData);
+      } else {
+        print('情報取得エラー');
+      }
+      isLoading = false;
+    } catch(e) {
+      print(e);
     }
-    isLoading = false;
   }
 }
